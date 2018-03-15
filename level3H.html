@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="images/NCA.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>NCA Outreach Portal</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href='assets/css/material-kit.css' rel='stylesheet' />
+    <link href="assets/css/material-dashboard.css?v=1.2.1" rel="stylesheet" />
+    <link href='assets/css/fullcalendar.css' rel='stylesheet' />
+    <!--  CSS for full input     -->
+    <link href='assets/css/fileinput.min.css' rel='stylesheet' />
+    <!--     Fonts and icons     -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/material.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+
+
+    <link href='assets/css/fullcalendar.print.css' rel='stylesheet' media='print' />
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="assets/css/uikit.min.css" />
+    <script type="text/javascript" charset="utf8" src="assets/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/js/dataTables.material.min.js"></script>
+    <style>
+        h2 {
+            color: black;
+            font-weight: 100;
+        }
+
+        #wrap {
+            width: 1100px;
+            margin: 0 auto;
+        }
+
+        #external-events {
+            float: left;
+            width: 150px;
+            padding: 0 10px;
+            text-align: left;
+        }
+
+        #external-events h4 {
+            font-size: 16px;
+            margin-top: 0;
+            padding-top: 1em;
+        }
+
+        .external-event {
+            /* try to mimick the look of a real event */
+            margin: 10px 0;
+            padding: 2px 4px;
+            background: #3366CC;
+            color: #fff;
+            font-size: .85em;
+            cursor: pointer;
+        }
+
+        #external-events p {
+            margin: 1.5em 0;
+            font-size: 11px;
+            color: #666;
+        }
+
+        #external-events p input {
+            margin: 0;
+            vertical-align: middle;
+        }
+
+        #calendar {
+            margin: 0 auto;
+            width: 900px;
+            background-color: #FFFFFF;
+            border-radius: 6px;
+            box-shadow: 0 1px 2px #C3C3C3;
+        }
+    </style>
+
+</head>
+
+
+<body onload="welcomeToHomeLevel3()">
+    <img src="images/outreachbanner.png" class="w3-border" alt="NCA Icon" style="width: 100%;">
+
+    <div class="wrapper wrapper-full-page">
+
+        <!-- <div class="full-page login-page" filter-color="black" data-image="assets/img/login.jpeg"> -->
+        <div class="full-page login-page" style="background-color:#44b8f8">
+            <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+            <div class="content">
+                <div class="container">
+                    <a id="logout" class="btn btn-twitter" href="index.html" style="float: right;">
+                        <i class="material-icons">exit_to_app</i> Logout</a>
+                    <div class="row" style="margin-top: -7%;">
+
+                        <div class="text-left" style="font-weight: 200; color: white; font-size: 2em; margin-left: 5%; margin-top:1%;">
+                            EVENT APPROVAL
+                        </div>
+
+                        <div class="text-left" style="font-weight: 100; color: white; font-size: 1.5em; margin-left: 5%; margin-top:1%;">
+                            Approve an event to allow reporting capabilities
+                        </div>
+
+                        <br/>
+
+                        <div class="card card-login card-hidden card-nav-tabs">
+                            <div class="header" style="background-color:#424242">
+                                <div class="nav-tabs-navigation">
+                                    <div class="nav-tabs-wrapper">
+                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                            <li class="active">
+                                                <a href="#cal" data-toggle="tab">Calendar</a>
+                                            </li>
+                                            <li>
+                                                <a href="#myevent" data-toggle="tab">Events</a>
+                                            </li>
+                                            <li>
+                                                <a href="#myreport" data-toggle="tab">Reports</a>
+                                            </li>
+                                            <li>
+                                                <a href="#level3users" data-toggle="tab">Users</a>
+                                            </li>
+                                            <li>
+                                                <a href="#level3dashboard" data-toggle="tab">Dashboard</a>
+                                            </li>
+                                            <li>
+                                                <a href="#changelogs" data-toggle="tab">Change Logs</a>
+                                            </li>
+                                            <li>
+                                                <a href="#changepassword" data-toggle="tab">Change My Password</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="tab-content">
+
+                                    <div class="tab-pane" id="myevent" style=" padding: 3%;">
+                                        <div class="content">
+                                            <table id="level3list" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-no-bordered table-hover"
+                                                width="100%">
+                                                <thead style="text-align: left;">
+                                                    <tr style="text-align: left;">
+                                                        <th style="text-align: left; font-size: 1.0em;">Event Title</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Region</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Creator</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Date Verified</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Approval Status</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Action</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="myreport" style=" padding: 3%;">
+                                        <div class="content">
+                                            <table id="level3reportlist" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-no-bordered table-hover"
+                                                width="100%">
+                                                <thead style="text-align: left;">
+                                                    <tr style="text-align: left;">
+                                                        <th style="text-align: left; font-size: 1.0em;">Event Title</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Region</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Town</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Date Reported</th>
+                                                        <th style="text-align: left; font-size: 1.0em;">Action</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane active" id="cal" style=" padding: 3%;">
+                                        <div id='calendar' style="width:100%;"></div>
+                                    </div>
+                                    <div class="tab-pane" id="level3users" style=" padding: 3%;">
+                                        <form id="AddUserForm" action="" method="">
+                                            <div class="card-content" style="padding: 2% 15%;">
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label style="font-weight: 900; color: #aaa" class="control-label">
+                                                                FIRSTNAME
+                                                                <small>(required)</small>
+                                                            </label>
+                                                            <input id="useraddfname" name="useraddfname" class="form-control" type="text" required="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label style="font-weight: 900; color: #aaa" class="control-label">
+                                                                LASTNAME
+                                                                <small>(required)</small>
+                                                            </label>
+                                                            <input id="useraddlname" name="useraddlname" class="form-control" type="text" required="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label style="font-weight: 900; color: #aaa" class="control-label">
+                                                                EMAIL
+                                                                <small>(required)</small>
+                                                            </label>
+                                                            <input id="useraddemail" name="useraddemail" class="form-control" type="text" required="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label style="font-weight: 900; color: #aaa" class="control-label">
+                                                                PASSWORD
+                                                                <small>(required)</small>
+                                                            </label>
+                                                            <input id="useraddpword" name="useraddpword" class="form-control" type="password" required="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label style="font-weight: 900; color: #aaa" class="control-label">
+                                                                LEVEL
+                                                                <small>(required)</small>
+                                                            </label>
+                                                            <select id="useraddlevel" name="level" class="selectpicker" data-style="btn" title="Select Level" data-size="11" style="background-color:#000000;">
+                                                                <option value="1">Outreach Team</option>
+                                                                <option value="2">Regional Manager</option>
+                                                                <option value="3">Project Manager</option>
+                                                                <option value="4">Management</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label style="font-weight: 900; color: #aaa" class="control-label">
+                                                                REGION
+                                                                <small>(required)</small>
+                                                            </label>
+                                                            <select id="useraddregion" name="region" class="selectpicker" data-style="btn" title="Select Region" data-size="11" style="background-color:#000000;">
+                                                                <option value="1">Ashanti</option>
+                                                                <option value="2">Brong Ahafo</option>
+                                                                <option value="3">Central</option>
+                                                                <option value="4">Eastern</option>
+                                                                <option value="5">Greater Accra</option>
+                                                                <option value="6">Northern</option>
+                                                                <option value="7">Upper East</option>
+                                                                <option value="8">Upper West</option>
+                                                                <option value="9">Volta</option>
+                                                                <option value="10">Western</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+
+                                                </div>
+                                                <br/>
+
+                                                <div class="category form-category">
+                                                    <small>(required)</small> - Required fields</div>
+
+                                                <div class="form-footer text-right">
+                                                    <div class="checkbox pull-left">
+
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-default pull-left" onclick="clearuseraddfield(event)">Clear Fields</button>
+                                                <button id="adduserinfo" type="submit" class="btn btn-twitter pull-right" onclick="addlevel2user(event)">Add User</button>
+                                            </div>
+                                        </form>
+
+                                        <h2 style="font-weight: 900;color: #aaa" class="col-sm-12 text-center">Users List</h2>
+
+                                        <div class="content">
+                                            <table id="level3userstable" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-no-bordered table-hover"
+                                                width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>First Name</th>
+                                                        <th>Last Name</th>
+                                                        <th>Mail</th>
+                                                        <th>Region</th>
+                                                        <th>Level</th>
+                                                        <th>Status</th>
+                                                        <th class="disabled-sorting text-right">Actions</th>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="level3dashboard" style=" padding: 3%;">
+                                        <div class="content">
+                                            <div class="container-fluid">
+
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8">
+                                                    <div class="card card-stats">
+                                                        <div data-background-color="grey">
+                                                            <i class="material-icons">search</i>
+                                                        </div>
+                                                        <div class="card-content">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label style="font-weight: 900; color: #aaa" class="control-label">
+                                                                            Start date
+                                                                            <small>(required)</small>
+                                                                        </label>
+                                                                        <input id="addnewdateselected" type="text" class="form-control datetimepicker" required="true" onkeydown="return false;"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label style="font-weight: 900; color: #aaa" class="control-label">
+                                                                            End date
+                                                                            <small>(required)</small>
+                                                                        </label>
+                                                                        <input id="addenddateselected" class="form-control datetimepickker" type="text" required="true" onkeydown="return false;"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button id="dashsearchinfo" type="submit" class="btn btn-twitter col-sm-12" onclick="searchdash(); return false">Search</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2"></div>
+
+                                                <br />
+                                                <div id="datafield" class="row" style="display:none;">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="card">
+                                                                <div class="card-header card-header-icon" data-background-color="green">
+                                                                    <i class="material-icons">&#xE894;</i>
+                                                                </div>
+                                                                <div class="card-content">
+                                                                    <h3 class="card-title">National Outreach Event Created by Region</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-md-7">
+                                                                            <div class="table-responsive table-sales">
+                                                                                <table class="table">
+                                                                                    <tbody id="dashboardtablebody">
+                                                                                        <th>
+                                                                                            <td>Region</td>
+                                                                                            <td class="text-right">Events Hosted</td>
+                                                                                            <td class="text-right">Percentage %</td>
+                                                                                        </th>
+
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-md-offset-1" style="margin-top: 7%; margin-left: 8%;">
+                                                                            <div>
+                                                                                <img src="images/gh.svg" style="height: 40%; width:40%">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <select id="searchregion" class="selectpicker" data-style="btn" title="All Regions" data-size="11" style="background-color:#000000;"
+                                                                onchange="regionloadDashData(this.options[this.selectedIndex].value)">
+                                                                <option value="0">All Regions</option>
+                                                                <option value="1">Ashanti</option>
+                                                                <option value="2">Brong Ahafo</option>
+                                                                <option value="3">Central</option>
+                                                                <option value="4">Eastern</option>
+                                                                <option value="5">Greater Accra</option>
+                                                                <option value="6">Northern</option>
+                                                                <option value="7">Upper East</option>
+                                                                <option value="8">Upper West</option>
+                                                                <option value="9">Volta</option>
+                                                                <option value="10">Western</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <button type="submit" class="btn btn-twitter col-sm-12" onclick="generateReport(); return false">Generate Report</button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <br/>
+                                                   
+                                                    <br/>
+
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="card card-stats">
+                                                                <div data-background-color="orange">
+                                                                    <i class="material-icons">date_range</i>
+                                                                </div>
+                                                                <div class="card-content">
+                                                                    <p class="category">Total Events</p>
+                                                                    <p style="font-weight: bold; font-size: 2em;" id="totalEventsHoted" class="card-title"></p>
+                                                                </div>
+                                                                <div class="card-footer">
+                                                                    <div class="stats">
+                                                                        <p>From 8 regions</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card card-stats">
+                                                                <div data-background-color="rose">
+                                                                    <i class="material-icons">equalizer</i>
+                                                                </div>
+                                                                <div class="card-content">
+                                                                    <p class="category">Total Attendees</p>
+                                                                    <p style="font-weight: bold; font-size: 2em;" id="totalAttendees" class="card-title"></p>
+                                                                </div>
+                                                                <div class="card-footer">
+                                                                    <div class="stats">
+                                                                        <p>Estimated attendants to events</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card card-stats">
+                                                                <div data-background-color="green">
+                                                                    <i class="material-icons">store</i>
+                                                                </div>
+                                                                <div class="card-content">
+                                                                    <p class="category">Common Category</p>
+                                                                    <p style="font-weight: bold; font-size: 2em;" id="commonAudience" class="card-title"></p>
+                                                                </div>
+                                                                <div class="card-footer">
+                                                                    <div class="stats">
+                                                                        <p>From 15 other possible categories</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="">
+                                                        <div class="card" style="margin-top: 5%;">
+                                                            <div class="card-header">
+                                                                <br/>
+                                                                <h4 class="card-title">Statistics -
+                                                                    <small class="category">Visualize outreach user data</small>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="card-content">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <ul class="nav nav-pills nav-pills-icons nav-pills-rose nav-stacked" role="tablist">
+
+                                                                            <li class="active">
+                                                                                <a href="#eventstats" role="tab" data-toggle="tab">
+                                                                                    <center>
+                                                                                        <i class="material-icons" style="margin-right: 10px">schedule</i>
+                                                                                    </center> Event Data
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#userstats" role="tab" data-toggle="tab">
+                                                                                    <center>
+                                                                                        <i class="material-icons">face</i>
+                                                                                    </center> Outreach User Data
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#audiencestats" role="tab" data-toggle="tab">
+                                                                                    <center>
+                                                                                        <i class="material-icons">record_voice_over</i>
+                                                                                    </center>
+                                                                                    Audience Categories Reached Out To
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <div class="tab-content">
+                                                                            <div class="tab-pane active" id="eventstats">
+                                                                                <div id="eventcontainer" style="max-width:100%; height:300px;"></div>
+                                                                            </div>
+                                                                            <div class="tab-pane" id="userstats">
+                                                                                <div id="eventusercontainer" style="max-width:100%; height:300px;" overflow="hidden"></div>
+                                                                            </div>
+                                                                            <div class="tab-pane" id="audiencestats">
+                                                                                <div id="eventaudiencecontainer" style="max-width:100%; height:300px;" overflow="hidden"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="changelogs" style=" padding: 3%;">
+                                        <div class="content">
+
+                                            <center>
+                                                <p style="font-weight: 600;">Legend:</p>
+                                                <ul>
+                                                    <li style="display:inline-block; margin-left: 0px;">
+                                                        <i style="padding: 20px;color: black;" class='fa fa-calendar-plus-o fa-lg'></i>Future event</li>
+                                                    <li style="display:inline-block; margin-left: 7px;"> </li>
+                                                    <li style="display:inline-block; margin-left: 7px;">
+                                                        <i style="padding: 20px;color: orange;" class='fa fa-pencil-square-o fa-lg'></i>Edited event</li>
+                                                    <li style="display:inline-block; margin-left: 7px;"> </li>
+                                                    <li style="display:inline-block; margin-left: 7px;">
+                                                        <i style="padding: 20px;color: green;" class='fa fa-check-circle-o fa-lg'></i>Verified event</li>
+                                                    <li style="display:inline-block; margin-left: 7px;"> </li>
+                                                    <li style="display:inline-block; margin-left: 7px;">
+                                                        <i style="padding: 20px;color: green;" class='fa fa-check fa-lg'></i>Approved event</li>
+                                                    <li style="display:inline-block; margin-left: 7px;"> </li>
+                                                    <li style="display:inline-block; margin-left: 7px;">
+                                                        <i style="padding: 20px;color: green;" class='fa fa-thumbs-o-up fa-lg'></i>Approved report</li>
+                                                    <li style="display:inline-block; margin-left: 7px;"> </li>
+                                                    <li style="display:inline-block; margin-left: 7px;">
+                                                        <i style="padding: 20px;color: blue;" class='fa fa-calendar-plus-o fa-lg'></i>Added report</li>
+                                                    <li style="display:inline-block; margin-left: 7px;"> </li>
+                                                    <li style="display:inline-block; margin-left: 7px;">
+                                                        <i style='padding: 20px; color: green' class='fa fa-plus fa-lg'></i>Added user</li>
+                                                    <li style="display:inline-block; margin-left: 7px;"> </li>
+                                                    <li style="display:inline-block; margin-left: 7px;">
+                                                        <i style='padding: 20px; color: red' class='fa fa-ban fa-lg'></i>Deactivated user</li>
+                                                    <li style="display:inline-block; margin-left: 7px;"> </li>
+                                                    <li style="display:inline-block; margin-left: 7px;">
+                                                        <i style='padding: 20px;color:green' class='fa fa-circle fa-lg' color:
+                                                            'green'></i>Activated user</li>
+                                                </ul>
+                                            </center>
+
+
+                                            <div class="row">
+                                                <h2 style="font-weight: 900;color: #aaa; margin-top: 50px;" class="col-sm-12 text-center">Event Logs</h2>
+
+
+                                            </div>
+                                            <table id="eventlogslist" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-no-bordered table-hover"
+                                                width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Action</th>
+                                                        <th>Activity</th>
+                                                        <th>Date</th>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+
+
+                                            <div class="row">
+                                                <h2 style="font-weight: 900;color: #aaa; margin-top: 10%;" class="col-sm-12 text-center">User Logs</h2>
+
+                                            </div>
+                                            <table id="userlogslist" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-no-bordered table-hover"
+                                                width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Action</th>
+                                                        <th>Activity</th>
+                                                        <th>Date</th>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="changepassword" style=" padding: 3%;">
+
+                                        <div style="margin-left: 20%; margin-right: 20%;">
+
+                                            <center>
+                                                <label style="font-weight: 900; font-size: 1.5em;">NEW PASSWORD</label>
+                                            </center>
+
+                                            <div class="form-group">
+                                                <label style="font-weight: 900; color: #aaa; font-size: 1.0em;" class="control-label">
+                                                    Please enter your desired new password
+                                                    <small>(required)</small>
+                                                </label>
+                                                <input type="password" id="newpassword" name="addpendingtitle" class="form-control" name="title" type="text" required="true" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label style="font-weight: 900; color: #aaa; font-size: 1.0em;" class="control-label">
+                                                    Please confirm your new password
+                                                    <small>(required)</small>
+                                                </label>
+                                                <input type="password" id="confirmednewpassword" name="addpendingtitle" class="form-control" name="title" type="text" required="true" />
+                                            </div>
+
+                                            <button id="addeventinfo" type="submit" class="btn btn-twitter pull-right" onclick="passwordreset(event)">Reset Passowrd</button>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer" style="background-color:#44b8f8">
+            <div class="container">
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    <a href="#" style="color: black"> National Communications Authority </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <button id="viewEvent2Button" type="button" hidden class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewEvent2"></button>
+
+    <div id="modal-overflow-3" class="uk-modal-container" uk-modal>
+        <div class="uk-modal-dialog">
+
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Event Details</h2>
+            </div>
+          <div id="statusBanner">
+                        
+           </div>
+
+            
+           <div class="uk-modal-body" uk-overflow-auto>
+                
+                             <div class="row">
+                                     <div style="color: black; margin-top: 0px; font-size: 1.0em;">
+                                             <span style="margin-left: 10%;"><i class="fa fa-globe fa-lg"></i> Region: <span id="region" style="margin-top: -50px; font-weight: bold; text-transform: uppercase;"></span></span>
+                        
+                                             <span style="margin-left: 40%;"><i class="fa fa-map-marker fa-lg"></i> Town: <span id="town" style="margin-top: -10px; font-weight: bold; text-transform: uppercase;"></span></span>
+                                     </div>
+                            </div>
+                
+                             <div class="row">
+                                 <div>
+                                     <div class="uk-inline">
+                                        <img src="images/skyback.png" alt="">
+                                          <div class="uk-overlay uk-overlay-primary uk-position-cover">
+                                            <center><p id="eventtitle" style="font-weight: 400px; font-size: 1.5em; text-transform: uppercase; color: white; margin-top: 10px;" >asdasdsasdasdasdjkasdn a sdjknfnasdfkj n  sdjfknsadkfjna </p></center>
+                                            <center><p id="date_organized" style="font-size: 0.7em; text-transform: uppercase; color: white; margin-top: -15px;">23 january 2017</p></center>
+                                         </div>
+                                     </div>
+                                </div>
+                            </div>
+                
+                           
+                
+                            <div class="row" style="margin: 3% 10% 0% 10%;">
+
+                                    <div class="uk-margin-medium-top">
+                                        <ul class="uk-flex-center" uk-tab>
+                                            <li class="uk-active"><a href="#">Last Confirmed Dates</a></li>
+                                            <li><a href="#">Confirmation Comments History</a></li>
+                                        </ul>
+                
+                                        <ul class="uk-switcher uk-margin">
+                                            <li>           
+                                                
+                                                    <div style="padding-top: 5%;">
+                                                             <center>
+                                                                      <span><i class="fa fa-sticky-note fa-lg"></i><b> Topic(s): </b> <span id="event_topicslevel3" style="padding-top: 2%; text-transform: uppercase;"></span></span>
+                                                             </center>
+                                                       </div>
+
+                                                       <br/><br/>
+
+                                            <div class="row" style="margin: 0% 10% 3% 10%;">
+                                                    
+                                                                            <div class="uk-child-width-1-2@s" uk-grid uk-height-match="target: > div > .uk-card; row: false">
+                                                                                <div>
+                                                                                    <center>
+                                                                                    <div class="uk-card uk-card-default uk-card-body">
+                                                                                            <span><i class="fa fa-industry fa-lg"></i><br/><br/> Audience Category: <br/><br/><span id="audience_category" style="padding-top: 2%; font-size: 2.3em; font-weight: bold; text-transform: uppercase;"></span></span>
+                                                                                      </div>
+                                                                                    </center>
+                                                                                </div>
+                                                    
+                                                                                <div>
+                                                                                    <center>
+                                                                                     <div class="uk-card uk-card-default uk-card-body">
+                                                                                             <span><i class="fa fa-bullhorn fa-lg"></i><br/><br/> Audience Attendance Estimate: <br/><br/><span id="audience_attendance" style="padding-top: 2%; font-size: 2.3em; font-weight: bold; text-transform: uppercase;"></span></span>
+                                                                                     </div>
+                                                                                    </center>
+                                                                                </div>
+                                                                            </div>
+                                                                </div>
+                                                    
+                                                                <div class="row" style="margin: 0% 10% 5% 10%;">
+                                                                        
+                                                                            <div class="uk-child-width-1-2@s" uk-grid uk-height-match="target: > div > .uk-card; row: false">
+                                                                                <div>
+                                                                                    <span><i class="fa fa-comments-o fa-lg"></i> Mode Of Outreach Communication: </span>
+                                                                                    <table class="uk-table">
+                                                                                            
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Intended outreach communication mode</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                
+                                                                                    <tbody id="modeTable">
+                                                                                       
+                                                                                    </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                    
+                                                                                <div>
+                                                                                        <span><i class="fa fa-truck fa-lg"></i> Logistics Required: </span>
+                                                                                        <table class="uk-table">
+                                                                                                
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th>Materials needed for the meeting</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                    
+                                                                                            <tbody id="logisticsTable">
+                                                                                                
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                </div>
+                                                                            </div>
+                                                                </div>
+
+
+                                            </li>
+                                            <li>
+                                                    <span><i class="fa fa-clock-o fa-lg"></i> Confirmation History: </span><br/><br/>
+                                                    <div class="uk-child-width-1-3@s" uk-grid>
+                                                        
+                                                        <div>
+                                                        <div class="uk-panel" style="text-transform: capitalize; font-weight: bold;">USER</div>
+                                                        <div class="uk-panel"></div>
+                                                        </div>
+                                                        
+                                                        <div>
+                                                        <div class="uk-panel" style="text-transform: uppercase; font-weight: bold;">ACTION</div>
+                                                        </div>
+                                                    
+                                                        <div>
+                                                        <div class="uk-panel" style="text-transform: capitalize; font-weight: bold;">DETAILS</div>
+                                                        </div>
+                                                    
+                                                    </div>
+                    
+                                                    <div id="commentsView3" class="uk-child-width-1-3@s" uk-grid>
+                                                    
+                                                    </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+
+                                    
+                            </div>
+                
+                           
+                
+                            </div>
+
+
+            <div class="uk-modal-footer uk-text-right" id="approveformdivbuttons">
+                <!-- <button class="uk-button uk-button-default uk-modal-close" type="button" style="background-color: green; color: white;">Verify</button> -->
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="modal-overflow-comments" class="uk-modal-container" uk-modal>
+        <div class="uk-modal-dialog">
+
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Approval Comments</h2>
+            </div>
+
+            <div class="uk-modal-body" uk-overflow-auto>
+
+                <article class="uk-comment">
+                    <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                        <div class="uk-width-auto">
+                            <!-- <img class="uk-comment-avatar" src="../docs/images/avatar.jpg" width="80" height="80" alt=""> -->
+                            <img src="images/NCA.png" class="w3-border" alt="NCA Icon" width="80" height="80">
+                        </div>
+                    </header>
+
+                    <div class="row">
+                        <dl class="uk-description-list">
+                            <div class="uk-margin">
+                                <textarea id="commentsForApproval" class="uk-textarea" rows="5" placeholder="Please enter approval Comments"></textarea>
+                            </div>
+                        </dl>
+                    </div>
+                    
+                </article>
+            </div>
+
+            <div class="uk-modal-footer uk-text-right" id="verifycommentformdivbuttons">
+                <button class="uk-button uk-button-default uk-modal-close" type="button" style="background-color: green; color: white;" onclick="approveEvent()">Submit</button>
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="modal-overflow-reassign" class="uk-modal-container" uk-modal>
+        <div class="uk-modal-dialog">
+    
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Reassignment Reason</h2>
+            </div>
+
+    
+            <div class="uk-modal-body" uk-overflow-auto>
+                <article class="uk-comment">
+                    <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                        <div class="uk-width-auto">
+                            <!-- <img class="uk-comment-avatar" src="../docs/images/avatar.jpg" width="80" height="80" alt=""> -->
+                            <img src="images/NCA.png" class="w3-border" alt="NCA Icon" width="80" height="80">
+                        </div>
+                    </header>
+                    <div class="col-sm-12">
+                        <label style="font-weight: 900; color: #aaa" class="control-label">OTHER MEMBERS
+                            <small>(required)</small>
+                        </label>
+                        <div id="reassignMember" class="form-group"></div>
+                    </div>
+                    <div class="row">
+                        <dl class="uk-description-list">
+                            <div class="uk-margin">
+                                <textarea id="commentsForReassign" class="uk-textarea" rows="5" placeholder="Please enter Reasons"></textarea>
+                            </div>
+                        </dl>
+                    </div>
+    
+                </article>
+            </div>
+    
+            <div class="uk-modal-footer uk-text-right" id="verifycommentformdivbuttons">
+                <button class="uk-button uk-button-default uk-modal-close" type="button" style="background-color: green; color: white;" onclick="reassignEvent()">Submit</button>
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            </div>
+    
+    
+        </div>
+    </div>
+
+    <!-- UI kit modal -->
+    <div id="modal-overflow-2-report" class="uk-modal-container" uk-modal>
+            <div class="uk-modal-dialog">
+
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                <div class="uk-modal-header">
+                    <h2 style="margin: 0;" class="uk-modal-title">Event Report Details</h2>
+                    <small>REPORT CREATED ON:</small>
+                    <small id="report_3"></small>
+                </div>
+
+                <div id="statusBannerReport">
+                
+                </div>
+
+
+                <div class="uk-modal-body" uk-overflow-auto>
+                        
+                        
+                                <div class="row">
+                                        <div style="color: black; margin-top: 0px; font-size: 1.0em;">
+                                                <span style="margin-left: 10%;"><i class="fa fa-globe fa-lg"></i> Region: <span id="report_region_2" style="margin-top: -50px; font-weight: bold; text-transform: uppercase;"></span></span>
+                            
+                                                <span style="margin-left: 40%;"><i class="fa fa-map-marker fa-lg"></i> Town: <span id="report_town_2" style="margin-top: -10px; font-weight: bold; text-transform: uppercase;"></span></span>
+                                        </div>
+                                </div>
+                        
+                                    <div class="row">
+                                        <div>
+                                            <div class="uk-inline">
+                                                <img src="images/skyback.png" alt="">
+                                                    <div class="uk-overlay uk-overlay-primary uk-position-cover">
+                                                    <center><p id="report_eventtitle_2" style="font-weight: 400px; font-size: 1.5em; text-transform: uppercase; color: white; margin-top: 10px;" >asdasdsasdasdasdjkasdn a sdjknfnasdfkj n  sdjfknsadkfjna </p></center>
+                                                    <center><p id="report_date_organized_2" style="font-size: 0.7em; text-transform: uppercase; color: white; margin-top: -15px;">23 january 2017</p></center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        
+                                    
+                        
+                                    <div class="row" style="margin: 3% 10% 0% 10%;">
+
+                                            <div class="uk-margin-medium-top">
+                                                <ul class="uk-flex-center" uk-tab>
+                                                    <li class="uk-active"><a href="#">Last Confirmed Dates</a></li>
+                                                    <li><a href="#">Confirmation Comments History</a></li>
+                                                </ul>
+                        
+                                                <ul class="uk-switcher uk-margin">
+                                                    <li>           
+
+                                                            <div style="padding-top: 5%;">
+                                                                    <center>
+                                                                              <span><i class="fa fa-sticky-note fa-lg"></i><b> Topic(s): </b> <span id="event_topicsreport2" style="padding-top: 2%; text-transform: uppercase;"></span></span>
+                                                                    </center>
+                                                               </div>
+                            
+
+                                                        <div class="row" style="margin: 0% 10% 3% 10%;">
+                                                                <div class="uk-child-width-1-2@s" uk-grid uk-height-match="target: > div > .uk-card; row: false">
+                                                                    <div>
+                                                                        <center>
+                                                                        <div class="uk-card uk-card-default uk-card-body">
+                                                                                <span><i class="fa fa-industry fa-lg"></i><br/><br/> Audience Category: <br/><br/><span id="report_audience_category_2" style="padding-top: 2%; font-size: 2.3em; font-weight: bold; text-transform: uppercase;"></span></span>
+                                                                            </div>
+                                                                        </center>
+                                                                    </div>
+                                        
+                                                                    <div>
+                                                                        <center>
+                                                                        <div class="uk-card uk-card-default uk-card-body">
+                                                                                <span><i class="fa fa-bullhorn fa-lg"></i><br/><br/> Audience Attendance Estimate: <br/><br/><span id="report_audience_attendance_2" style="padding-top: 2%; font-size: 2.3em; font-weight: bold; text-transform: uppercase;"></span></span>
+                                                                        </div>
+                                                                        </center>
+                                                                    </div>
+                                                                </div>
+                                                    </div>
+                                        
+                                                    <div class="row" style="margin: 0% 10% 0% 10%;">
+                                                            
+                                                                <div class="uk-child-width-1-2@s" uk-grid uk-height-match="target: > div > .uk-card; row: false">
+                                                                    <div>
+                                                                        <span><i class="fa fa-comments-o fa-lg"></i> Mode Of Outreach Communication: </span>
+                                                                        <table class="uk-table">
+                                                                                
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Intended outreach communication mode</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                    
+                                                                        <tbody id="report_modeTable_2">
+                                                                            
+                                                                        </tbody>
+                                                                        </table>
+                                                                    </div>
+                                        
+                                                                    <div>
+                                                                            <span><i class="fa fa-truck fa-lg"></i> Logistics Required: </span>
+                                                                            <table class="uk-table">
+                                                                                    
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Materials needed for the meeting</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                        
+                                                                                <tbody id="report_logisticsTable_2">
+                                                                                    
+                                                                                </tbody>
+                                                                            </table>
+                                                                    </div>
+                                                                </div> 
+                                                    </div>
+                            
+                                                    <hr/>
+                            
+                                                    <div style="margin: 0% 10% 0% 10%;">
+                            
+                                                        <span style="font-size: 1.2em;"><i class="fa fa-street-view fa-lg"></i> Team Observations: </span>
+                                                        <div style="text-align: center; padding: 4%; margin: 1.5%; border-style: solid; border-width: 1px;" id="report_1"></div>
+                                                    
+                                                        <br/ >
+                            
+                                                        <span style="font-size: 1.2em;"><i class="fa fa-exclamation fa-lg"></i> Team Challenges: </span>
+                                                        <div style="text-align: center; padding: 4%; margin: 1.5%; border-style: solid; border-width: 1px;" id="report_2"></div>
+                                    
+                                                        <br/ >
+                                    
+                                                        <span style="font-size: 1.2em;"><i class="fa fa-exclamation-circle fa-lg"></i> Consumer Challenges: </span>
+                                                        <div style="text-align: center; padding: 4%; margin: 1.5%; border-style: solid; border-width: 1px;" id="report_4"></div>
+                                    
+                                                        <br/ >
+                            
+                                                        <div style="margin-top: 20px">
+                                                                <span style="font-size: 1.2em;"><i class="fa fa-user fa-lg"></i> Participating Team: </span>
+                                                                <center>
+                                                                 <div id="membersrepo2"></div>
+                                                                </center> 
+                                                        </div>
+                                                       
+                            
+                                                    </div>
+                                                    
+                            
+                                            
+                                                        <article class="uk-comment">
+                                            
+                                                            <div class="uk-comment-body" style="margin-top: 20px">
+                                            
+                                                                
+                                                                <center>
+                                                                        <dt>PHOTOS:</dt><br/>
+                                                                <div id="report_photos"></div>
+                                                                </center>
+                                            
+                                                            </div>
+                                                    
+                                            
+                                            
+                                                        </article>
+
+
+                                                    </li>
+                                                    <li>
+                                                         <span><i class="fa fa-clock-o fa-lg"></i> Confirmation History: </span><br/><br/>
+                                                            <div class="uk-child-width-1-3@s" uk-grid>
+                                                                
+                                                                <div>
+                                                                <div class="uk-panel" style="text-transform: capitalize; font-weight: bold;">USER</div>
+                                                                <div class="uk-panel"></div>
+                                                                </div>
+                                                                
+                                                                <div>
+                                                                <div class="uk-panel" style="text-transform: uppercase; font-weight: bold;">ACTION</div>
+                                                                </div>
+                                                            
+                                                                <div>
+                                                                <div class="uk-panel" style="text-transform: capitalize; font-weight: bold;">DETAILS</div>
+                                                                </div>
+                                                            
+                                                            </div>
+                            
+                                                            <div id="commentsReport3" class="uk-child-width-1-3@s" uk-grid>
+                                                            asd
+                                                            </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+                                            
+                                    </div>
+                        
+                                    
+                    </div>
+
+
+
+            <div class="uk-modal-footer uk-text-right" id="approveformdivbuttons">
+                <!-- <button class="uk-button uk-button-default uk-modal-close" type="button" style="background-color: green; color: white;">Verify</button> -->
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modal-overflow-deny-comments" class="uk-modal-container" uk-modal>
+        <div class="uk-modal-dialog">
+    
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+    
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Rejection Comments</h2>
+            </div>
+    
+            <div class="uk-modal-body" uk-overflow-auto>
+    
+                <article class="uk-comment">
+                    <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                        <div class="uk-width-auto">
+                            <!-- <img class="uk-comment-avatar" src="../docs/images/avatar.jpg" width="80" height="80" alt=""> -->
+                            <img src="images/NCA.png" class="w3-border" alt="NCA Icon" width="80" height="80">
+                        </div>
+                    </header>
+    
+                    <div class="row">
+                        <dl class="uk-description-list">
+                            <div class="uk-margin">
+                                <textarea id="commentsForDeny" class="uk-textarea" rows="5" placeholder="Please enter Deny Reasons"></textarea>
+                            </div>
+                        </dl>
+                    </div>
+                </article>
+            </div>
+    
+            <br>
+    
+            <div class="uk-modal-footer uk-text-right" id="verifycommentformdivbuttons">
+                <button class="uk-button uk-button-default uk-modal-close" type="button" style="background-color: green; color: white;" onclick="denyEvent()">Submit</button>
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            </div>
+    
+    
+        </div>
+    
+    </div>
+
+    <!-- UIkit JS -->
+    <script src="assets/js/uikit.min.js"></script>
+    <script src="assets/js/uikit-icons.min.js"></script>
+
+    <script src="index.js"></script>
+</body>
+
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src='jquery/jquery-1.10.2.js'></script>
+<script src='jquery/jquery-ui.custom.min.js'></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/material.min.js" type="text/javascript"></script>
+<script src="assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+<script src="assets/js/core.js"></script>
+<!-- Library for adding dinamically elements -->
+<script src="assets/js/arrive.min.js" type="text/javascript"></script>
+<!-- Forms Validations Plugin -->
+<script src="assets/js/jquery.validate.min.js"></script>
+<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="assets/js/moment.min.js"></script>
+<!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
+<script src="assets/js/chartist.min.js"></script>
+<!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+<script src="assets/js/jquery.bootstrap-wizard.js"></script>
+<!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+<!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script src="assets/js/bootstrap-datetimepicker.js"></script>
+<!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+<script src="assets/js/jquery-jvectormap.js"></script>
+<!-- Sliders Plugin, full documentation here: https://refreshless.com/nouislider/ -->
+<script src="assets/js/nouislider.min.js"></script>
+
+<!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="assets/js/jquery.select-bootstrap.js"></script>
+<!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+<script src="assets/js/jquery.datatables.js"></script>
+<!-- Sweet Alert 2 plugin, full documentation here: https://limonte.github.io/sweetalert2/ -->
+<script src="assets/js/sweetalert2.js"></script>
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="assets/js/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+<script src="assets/js/fullcalendar.min.js"></script>
+<script src='assets/js/fullcalendar.js'></script>
+<!-- Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+<script src="assets/js/jquery.tagsinput.js"></script>
+<!-- Material Dashboard javascript methods -->
+<!-- <script src="assets/js/material-dashboard.js?v=1.2.1"></script> -->
+
+<!-- File input js -->
+<script src="assets/js/fileinput.js" type="text/javascript"></script>
+<script src="assets/js/fileinput.min.js" type="text/javascript"></script>
+
+<script src="highcharts/highstock.js"></script>
+<script src="highcharts/highcharts-3d.js"></script>
+<script src="highcharts/exporting.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        /*  className colors
+
+        className: default(transparent), important(red), chill(pink), success(green), info(blue)
+
+        */
+
+        /* initialize the external events
+        -----------------------------------------------------------------*/
+
+        $('#external-events div.external-event').each(function () {
+            var eventObject = {
+                title: $.trim($(this).text()) // use the element's text as the event title
+            };
+
+            // store the Event Object in the DOM element so we can get to it later
+            $(this).data('eventObject', eventObject);
+
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+                zIndex: 999,
+                revert: true,      // will cause the event to go back to its
+                revertDuration: 0  //  original position after the drag
+            });
+
+        });
+
+        /* initialize the calendar
+        -----------------------------------------------------------------*/
+
+        var calendar = $('#calendar').fullCalendar({
+            header: {
+                left: 'title',
+                right: 'prev,next today'
+            },
+            editable: true,
+            firstDay: 0, //  1(Monday) this can be changed to 0(Sunday) for the USA system
+            selectable: true,
+            defaultView: 'month',
+
+            axisFormat: 'h:mm',
+            columnFormat: {
+                month: 'ddd',    // Mon
+                week: 'ddd d', // Mon 7
+                day: 'dddd M/d',  // Monday 9/7
+                agendaDay: 'dddd d'
+            },
+            titleFormat: {
+                month: 'MMMM yyyy', // September 2009
+                week: "MMMM yyyy", // September 2009
+                day: 'MMMM yyyy'                  // Tuesday, Sep 8, 2009
+            },
+            allDaySlot: false,
+            selectHelper: false,
+            events: {
+                url: 'databasehandler.php?cmd=7',
+                type: 'POST',
+                dataType: 'json'
+            },
+            eventColor: '#00008B',
+            eventTextColor: '#FFFFFF'
+        });
+
+
+    });
+		// var foldname = document.getElementById("neworgcompname").value;
+
+		// 	setCookie("foldname", foldname, 1);
+
+</script>
+
+</html>
